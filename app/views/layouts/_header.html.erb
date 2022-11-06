@@ -1,0 +1,59 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand">
+        <%= link_to "CoffeeMap", root_path, class:"header-title navbar-brand" %>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "レビュー投稿", new_review_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "レビュー一覧", reviews_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "レビュー一覧", reviews_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

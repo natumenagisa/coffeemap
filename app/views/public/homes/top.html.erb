@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 mx-auto my-5">
+      <div class="text-center">
+        <p>
+          コーヒーが飲める場所のレビューサイトです<br>
+          チェーン店からひっそりとある個人店まであらゆる場所を<br>
+          投稿してください！<br>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md6">
+      <h2>ジャンル一覧</h2>
+        <% @genres.first(20).each do |genre| %>
+          <%= link_to genre_path(genre.id) do %>
+            <table class="table" >
+              <tr>
+                <td><%= genre.name %></td>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
+    </div>
+
+    <div class="col-md6 offset-3">
+      <h2>レビュー一覧</h2>
+        <% @reviews.first(6).each do |review| %>
+          <%= render "review" ,review: review %>
+        <% end %>
+
+      <div class="all-reviews-show-button">
+        <%= link_to "すべてのレビューを見る ＞", reviews_path %>
+      </div>
+    </div>
+  </div>
+</div>

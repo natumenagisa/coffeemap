@@ -1,0 +1,9 @@
+<%= link_to genre_path(@genre.id) do %>
+  <% @genres.each do |genre| %>
+    <table class="table" >
+      <tr>
+        <td><%= genre.name %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>

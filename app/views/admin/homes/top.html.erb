@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 mx-auto my-5">
+      <div class="text-center">
+        <p>
+          コーヒーが飲める場所のレビューサイトです<br>
+          チェーン店からひっそりとある個人店まであらゆる場所を<br>
+          投稿してください！<br>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>レビュー一覧</h2>
+  <div class="row">
+    <%# @reviews.first(6).each do |review| %>
+      <%#= render "review", review: review %>
+    <%# end %>
+  </div>
+  <div class="all-reviews-show-button">
+    <%= link_to "すべてのレビューを見る ＞", reviews_path %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<%= link_to review_path(review.id) do %>
+  <% if review.image.attached? %>
+    <%= image_tag review.image, size: "180x130" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "180x130" %>
+  <% end %>
+  <%= review.title %>
+<% end %>

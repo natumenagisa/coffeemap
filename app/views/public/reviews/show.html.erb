@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h3>レビュー詳細</h3>
+
+      <table class="table">
+        <tr>
+          <th>投稿者</th>
+          <td><%= current_customer.name %></td>
+        </tr>
+
+        <tr>
+          <th>タイトル</th>
+          <td><%= @review.title %></td>
+        </tr>
+
+        <tr>
+          <th>評価</th>
+          <td>
+            <div id="star"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <th>住所</th>
+          <td>
+            <%= @review.genre.name %><br>
+            <%= @review.address %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>本文</th>
+          <td><%= @review.reviw_text %></td>
+        </tr>
+      </table>
+
+      <div class="col-lg text-center">
+      <% if @review.image.attached? %>
+        <%= image_tag @review.image, size: "200x180" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x180" %>
+      <% end %>
+      </div>
+
+      <%= link_to '編集する', edit_review_path(@review.id), class: 'btn btn-success' %>
+      <%= link_to '削除する', review_path(@review.id), method: :delete, class: 'btn btn-success' %>
+    </div>
+
+    <div class="row offset-1">
+      <div class="map">
+        <h3>アクセス</h3>
+        <div id='map'></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--評価Javascript-->
+<script>
+  let elem = document.getElementById('star');
+  let opt = {
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    score: <%= @review.evaluation %>,
+    readOnly: true,
+  };
+  raty(elem, opt);
+</script>
+
+<!--googlemapscript-->
+<style>
+  #map {
+    height: 450px;
+    width: 450px;
+  }
+</style>
+
+<script>
+  let map
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.7828, lng:-73.9653},
+      zoom: 16,
+    });
+
+    let inputAddress = "<%= @review.genre.name + @review.address %>"
+
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      //検索結果が何もなかった場合に表示
+      alert('該当する結果がありませんでした：' + status);
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2Fxapb0euOMkIfg5XWS-UjCpKtuiDL5M&callback=initMap" async defer></script>
