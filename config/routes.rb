@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'genres/show'
-  end
   #ユーザー用
   devise_for :customers, controllers: {
     sessions:      'public/sessions',
@@ -34,7 +31,7 @@ Rails.application.routes.draw do
 
 
   #管理者用
-  devise_for :admins, controllers: {
+  devise_for :admin, controllers: {
     sessions:      'admin/sessions',
     passwords:     'admin/passwords',
     registrations: 'admin/registrations'
@@ -43,9 +40,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'homes#top'
     resources :homes, only: [:top]
-    resources :reviews, only: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :reviews, only: [:index, :show, :destroy]
     resources :comments, only: [:destroy]
     resources :genres, only: [:index, :create, :edit, :show, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
   end
 end

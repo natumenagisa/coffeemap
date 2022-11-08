@@ -6,7 +6,7 @@
       <table class="table">
         <tr>
           <th>投稿者</th>
-          <td><%= current_customer.name %></td>
+          <td><%= @customer.name %></td>
         </tr>
 
         <tr>
@@ -43,10 +43,8 @@
       <% end %>
       </div>
 
-      <% if customer_signed_in? && current_customer.id == @review.customer_id %>
-        <%= link_to '編集する', edit_review_path(@review.id), class: 'btn btn-success' %>
-        <%= link_to '削除する', review_path(@review.id), method: :delete, class: 'btn btn-success' %>
-      <% end %>
+      <%= link_to '編集する', edit_review_path(@review.id), class: 'btn btn-success' %>
+      <%= link_to '削除する', admin_review_path(@review.id), method: :delete, class: 'btn btn-success' %>
     </div>
 
     <div class="row offset-1">

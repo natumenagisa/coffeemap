@@ -1,17 +1,17 @@
 <div class="review-index">
-  <h3 class="my-3 text-center"><%= @genre.name %>のレビュー一覧</h3>
-    <table class="table">
+  <h3>レビュー一覧</h3>
+    <table>
       <tbody>
-        <tr class="col">
-          <% @genre.reviews.each do |review| %>
+        <tr class="genre-box">
+          <% @genres.review.each do |review| %>
             <td class="item">
-                <%= link_to review_path(review) do %>
+                <%= link_to admin_review_path(review) do %>
                   <% if review.image.attached? %>
                     <%= image_tag reviews.image, size: "180x130" %>
                   <% else %>
                     <%= image_tag 'no_image', size: "180x130" %>
                   <% end %>
-                  <%= review.title %>
+                  <%= review.title %><br>
                 <% end %>
             </td>
           <% end %>

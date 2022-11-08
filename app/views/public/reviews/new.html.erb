@@ -19,37 +19,37 @@
 
       <tr>
         <div id="post_raty">
-          <%= f.label :評価 %>
+          <%= f.label :評価, class: "mr-5" %>
           <%#= f.hidden_field :evaluation, id: :review_star, class: "offset-1" %>
         </div>
       </tr>
 
       <tr>
         <div class="form-group my-2">
-          <%= f.label :住所 %>
+          <%= f.label :住所, class: "mr-5" %>
           <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt =>"--選択してください--" %><br>
-          <%= f.text_field :address, placeholder:"住所", class: "offset-1" %>
+          <%= f.text_field :address, placeholder:"住所", class: "ml-5" %>
         </div>
       </tr>
 
       <tr>
         <div class="form-group my-2">
-          <%= f.label :本文 %>
-          <%= f.text_area :reviw_text, rows:'5', placeholder:"本文", class: "offset-1" %>
+          <%= f.label :本文, class: "mr-5" %>
+          <%= f.text_area :reviw_text, rows:'5', placeholder:"本文" %>
         </div>
       </tr>
 
       <tr>
         <div class="form-group my-2">
-          <%= f.label :画像 %>
+          <%= f.label :画像, class: "mr-5" %>
           <%= f.file_field :image %>
         </div>
       </tr>
 
     </table>
       <div class="d-flex">
-        <p><%= f.submit "投稿する", class: "btn btn-success" %></p>
-        <p><%= link_to "キャンセル", 'reviews_path', class: "btn btn-success" %></p>
+        <p class="mr-5"><%= f.submit "投稿する", class: "btn btn-success" %></p>
+        <p class="ml-5"><%= link_to "キャンセル", 'reviews_path', class: "btn btn-success" %></p>
       </div>
     <% end %>
 
