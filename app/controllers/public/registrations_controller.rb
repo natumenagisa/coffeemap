@@ -2,7 +2,7 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
-  before_action :ensure_normal_user, only: :destroy
+  before_action :ensure_normal_user, only: %i[update destroy]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -64,7 +64,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def ensure_normal_user
     if resource.email == 'gest@gest.com'
-      redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
     end
   end
 

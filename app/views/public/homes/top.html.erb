@@ -30,11 +30,13 @@
 
     <div class="col-md7 ml-5">
       <h2>レビュー一覧</h2>
-        <% @reviews.first(6).each do |review| %>
+      <div class="container">
+        <div class="row">
+          <% @reviews.first(6).each do |review| %>
           <%= render "review" ,review: review %>
-        <% end %>
-
-      <div class="all-reviews-show-button">
+          <% end %>
+        </div>
+      </div>
         <%= link_to "すべてのレビューを見る ＞", reviews_path %>
       </div>
     </div>

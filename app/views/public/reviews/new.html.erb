@@ -1,52 +1,73 @@
 <div class="container">
   <div class="row offset-1">
-    <div class="col-sm-8 px-sm-0 offset-sm-1">
+    <div class="col-sm-8 px-sm-0 my-3">
       <h3>レビュー投稿</h3>
+
     </div>
   </div>
 </div>
 
 <div class="row offset-3">
-  <div class="col-sm-10 px-sm-0 mx-auto mb-5 position-static">
+  <div class="col-sm-11 position-static">
+
     <%= form_with model: @review do |f| %>
-    <table>
-      <tr>
-        <div class="form-group my-2">
-          <%= f.label :タイトル %>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :タイトル, class: "mr-5" %>
+        </div>
+        <div class="col-md-10 position-static">
           <%= f.text_field :title, placeholder:"タイトル" %>
         </div>
-      </tr>
+      </div>
+    </div>
 
-      <tr>
-        <div id="post_raty">
-          <%= f.label :評価, class: "mr-5" %>
-          <%#= f.hidden_field :evaluation, id: :review_star, class: "offset-1" %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :評価 %>
         </div>
-      </tr>
+        <div class="col-md-10 position-static">
+          <div id="post_raty"></div>
+        </div>
+      </div>
+    </div>
 
-      <tr>
-        <div class="form-group my-2">
-          <%= f.label :住所, class: "mr-5" %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :住所 %>
+        </div>
+        <div class="col-md-10 position-static">
           <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt =>"--選択してください--" %><br>
-          <%= f.text_field :address, placeholder:"住所", class: "ml-5" %>
+          <%= f.text_field :address, placeholder:"住所", class:"my-2" %>
         </div>
-      </tr>
+      </div>
+    </div>
 
-      <tr>
-        <div class="form-group my-2">
-          <%= f.label :本文, class: "mr-5" %>
-          <%= f.text_area :reviw_text, rows:'5', placeholder:"本文" %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.label :本文 %>
         </div>
-      </tr>
+        <div class="col-md-10 position-static">
+          <%= f.text_area :reviw_text, size: "70x10", placeholder:"本文" %>
+        </div>
+      </div>
+    </div>
 
-      <tr>
-        <div class="form-group my-2">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-2">
           <%= f.label :画像, class: "mr-5" %>
+        </div>
+        <div class="col-md-10 position-static">
           <%= f.file_field :image %>
         </div>
-      </tr>
+      </div>
+    </div>
 
-    </table>
       <div class="d-flex">
         <p class="mr-5"><%= f.submit "投稿する", class: "btn btn-success" %></p>
         <p class="ml-5"><%= link_to "キャンセル", 'reviews_path', class: "btn btn-success" %></p>

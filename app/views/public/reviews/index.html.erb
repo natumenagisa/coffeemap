@@ -3,8 +3,8 @@
     <h1 class="my-5">レビュー一覧</h1>
   </div>
 
-  <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
-    <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+  <div class="container">
+    <div class="row">
       <% @reviews.each do |review| %>
         <div class="img-wrap">
             <%= link_to reviews_path(review.id) do %>
@@ -13,11 +13,10 @@
               <% else %>
                 <%= image_tag 'no_image', size: "180x130" %>
               <% end %>
-              <%= review.title %>
+                <p><%= review.title %></p>
             <% end %>
         </div>
       <% end %>
     </div>
-  </div>
   <%= paginate @reviews %>
 </div>
