@@ -18,7 +18,11 @@ admin account: admin@admin.com
 <いつでも>
 
 ## 設計書
-<...>
+<詳細設計>
+https://docs.google.com/spreadsheets/d/1SMIAsWz-ikQtxqggo5wojEUVFlaqcbnlO-EKyUs1EYg/edit#gid=0
+
+<テーブル定義書>
+https://docs.google.com/spreadsheets/d/1qHw_eoKcLXuQtUAF-B9rzycps1ykGF3FHHqNILzcdpk/edit#gid=1384842203
 
 ## 実装機能リストのURL
 https://docs.google.com/spreadsheets/d/1koacy8-wxjM_ZjxHqLzJw0BMuESG86RvZNwIEpVlmwU/edit?usp=sharing
