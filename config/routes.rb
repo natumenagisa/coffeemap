@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :homes, only: [:top]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :reviews, only: [:index, :show, :destroy]
+    resources :reviews, only: [:index, :show, :edit, :update, :destroy]
     resources :comments, only: [:destroy]
     resources :genres, only: [:index, :create, :edit, :show, :update]
   end
