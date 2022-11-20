@@ -7,7 +7,7 @@
     <div class="row">
       <% @reviews.each do |review| %>
         <div class="img-wrap">
-            <%= link_to reviews_path(review.id) do %>
+            <%= link_to review_path(review.id) do %>
               <% if review.image.attached? %>
                 <%= image_tag review.image, size: "180x130" %>
               <% else %>
